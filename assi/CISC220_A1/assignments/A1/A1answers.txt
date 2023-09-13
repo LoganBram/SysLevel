@@ -1,0 +1,48 @@
+0.
+pwd
+
+1.
+cd ~/SysLevel/assi/CISC220_A1/assignments/A1 (according to my file system)
+
+2.
+cd assignments/A1
+
+3.
+
+
+
+4.
+head -n 20 A1/Jack_Hammer/a1answer
+
+5.
+ls -d */*.txt
+
+6.
+ls -d */[!A]*.txt
+
+7.
+diff a1answer ../Sue_Vlaki/a1answer
+
+8.
+
+
+9.
+
+
+10.
+
+
+11.
+
+
+12.
+
+
+13.
+
+
+14.
+
+
+15.
+

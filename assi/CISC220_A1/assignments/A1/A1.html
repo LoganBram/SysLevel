@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CISC220 Assignment 1: Bash commands, redirection, piping</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="github-pandoc.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CISC220 Assignment 1: Bash commands, redirection, piping</h1>
+</header>
+<h1 id="instructions">Instructions</h1>
+<p>Download and save <a href="A1answers.txt">this plain-text document for your answers</a>. With the exception of Question 11, all of your answers should be a single line long. Record your answers in the same way as shown in the answer for Question 0.</p>
+<p>When editing the answer file, be sure to use a plain-text editor (and not something like Word) as the TAs will be copying and pasting your answers into a terminal to test them.</p>
+<p>Submit the file <code>A1answers.txt</code> on onq.</p>
+<h1 id="questions">Questions</h1>
+<p>Suppose that you have a directory <code>Assignment1</code>. Inside that directory are ten directories named <code>0</code>, <code>1</code>, <code>2</code>, …, <code>9</code>. Inside each of the ten numbered directories are another ten directories <code>0</code>, <code>1</code>, <code>2</code>, …, <code>9</code>.</p>
+<p>The figure below shows the structure of the directories.</p>
+<p><img src="images/Slide1.PNG" /></p>
+<ol start="0" type="1">
+<li><p>This question is already answered for you in the answer document; it appears here so that you can see how you should answer the questions in this assignment.</p>
+<p>If your current working directory is <code>Assignment1</code> then what single command would you use to print the absolute path of the current working directory?</p></li>
+<li><p>Consider the last two digits <code>xy</code> of your student number. If your current working directory is <code>Assignment1</code> then what single command would you use to change to the directory named <code>y</code> that is inside the directory named <code>x</code> (for example, if the last two digits of your student number are <code>53</code>, then what single command would you use to change to the directory <code>3</code> that is inside the directory <code>5</code>)?</p>
+<p>The figure below shows the current working directory in red and the directory to change to in blue for the example above:</p>
+<p><img src="images/Slide2.PNG" /></p></li>
+<li><p>If your current working directory is directory <code>y</code> from Question 1 then what single command would you use to change back to the <code>Assignment1</code> directory? Do no use an absolute path in this question; your answer should not depend on where the <code>Assignment1</code> directory is on your filesystem.</p>
+<p>The figure below shows the current working directory in red and the directory to change to in blue for the example above:</p>
+<p><img src="images/Slide3.PNG" /></p></li>
+<li><p>If your current working directory is directory <code>x</code> from Question 1 then what single command would you use to change to the directory named <code>x</code> that is inside the directory named <code>y</code>?</p>
+<p>For example, if the last two digits of your student number are <code>53</code>, then the current working directory is the directory named <code>5</code> inside of <code>Assignment1</code>. Your answer should be a single command that starting from the current working directory changes to the directory named <code>5</code> inside the directory named <code>3</code>.</p>
+<p>The figure below shows the current working directory in red and the directory to change to in blue for the example above:</p>
+<p><img src="images/Slide4.PNG" /></p></li>
+<li><p>If your current working directory is <code>Assignment1</code> then what single command would you use to list the regular (non-hidden) files found in the directory <code>y</code> from Question 1?</p>
+<p>For example, if the last two digits of your student number are <code>53</code>, then the question is asking you to list the files found in the directory <code>3</code> that is inside the directory <code>5</code>.</p>
+<p>The figure below shows the current working directory in red and the directory to list the contents of in blue for the example above:</p>
+<p><img src="images/Slide2.PNG" /></p></li>
+<li><p>If your current working directory is <code>Assignment1</code> then what single command would you use to list the regular (non-hidden) files found in the directories <code>x</code> and <code>y</code> from Question 1? Here, you want to list all of the files that are in <code>x</code> and all of the files that are in <code>y</code>. Note that the files that are in <code>x</code> include the directories <code>0</code>, <code>1</code>, <code>2</code>, …, <code>9</code>.</p>
+<p>The figure below shows the current working directory in red and the directories to list the contents of in blue for the example above:</p>
+<p><img src="images/Slide5.PNG" /></p></li>
+<li><p>If your current working directory is directory <code>y</code> from Question 1 then what single command would you use to list the regular (non-hidden) files in the directory that have the letter <code>e</code> in their name?</p>
+<p><em>NOTE</em>: The particular current working directory is irrelevant for Questions 6 through 10.</p></li>
+<li><p>If your current working directory is directory <code>y</code> from Question 1 then what single command would you use to list the regular (non-hidden) files in the directory whose names <em>do not</em> begin with a lowercase letter <em>and do</em> end with the extension <code>.txt</code>? For example, the file <code>CISC220.txt</code> would be listed, but <code>cisc220.txt</code> would not be listed.</p></li>
+<li><p>Same as Question 7, except the listed files should appear in reverse alphabetic order.</p></li>
+<li><p>Same as Question 7, except that the inode number should be output with the filename and there should be one filename per line of output.</p></li>
+<li><p>If your current working directory is directory <code>y</code> from Question 1 then what single command would you use to list all of the hidden files that are in the directory (but not the contents of the directories <code>.</code> and <code>..</code>)? A hidden file has a filename that begins with a single <code>.</code> (for example, <code>.ucantseeme</code>).</p></li>
+<li><p>Suppose that you have a text file named <code>unsorted.txt</code> that contains one word per line and 75 lines (so 75 words). The file was generated by repeatedly randomly choosing a word from a list of 50 unique words and adding the chosen word to the end of the file. If you run the command <code>uniq unsorted.txt</code> what can you say about the number of lines of output produced by the command? Briefly explain your answer based on what <code>uniq</code> actually does.</p></li>
+<li><p>Suppose that you have a text file named <code>unsorted.txt</code> that contains one word per line. What single command would you use to sort the contents of the file <em>in reverse alphabetic order</em> and then save the sorted output to a file named <code>sorted.txt</code>? <em>Hint: Use redirection</em>.</p></li>
+<li><p>What command pipeline would you use to list the most recently modified file in a directory? If more than one file has the same most recent modification time then your command should output the file whose name comes first alphabetically. <em>Hint: Look up the <code>head</code> command</em>.</p></li>
+<li><p>What command pipeline would you use to list the file that was modified longest ago in a directory? If more than one file has the same oldest modification time then your command should output the file whose name comes <em>last</em> alphabetically. <em>Hint: Look up the <code>tail</code> command</em>.</p>
+<p><em>NOTE</em>: The original version of this question erroneously asked for the name that comes first alphabetically. If you answered this version of the question, please indicate that you did so on your submission.</p></li>
+<li><p>Run the command:</p>
+<p><code>date -I"minutes"</code></p>
+<p>and examine the output (and perhaps look at the <code>date</code> man page).</p>
+<p>If <code>date -I"minutes"</code> is the first command in a pipeline, then what complete pipeline would you use to print the time obtained from the <code>date</code> command to standard output and save the time to a file named <code>time.txt</code>?</p>
+<p>For example, if <code>date -I"minutes"</code> outputs <code>2021-09-15T22:38-04:00</code> then your pipeline should output the time <code>22:38</code> to standard output and save the time to the file <code>time.txt</code>.</p></li>
+</ol>
+</body>
+</html>
