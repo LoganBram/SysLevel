@@ -24,19 +24,21 @@ ls -d */[!A]*.txt
 diff a1answer ../Sue_Vlaki/a1answer
 
 8.
+ls -l -S -d */*.txt
 
 
 9.
-
+ls -r -A *
 
 10.
+ls -a -1 */.late+ */.late++
 
 
 11.
-
+chmod 640 *.pdf
 
 12.
-
+chmod u=rw,g=rw,o=r *.png
 
 13.
 
