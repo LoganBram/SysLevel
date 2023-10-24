@@ -2,13 +2,13 @@
 pwd
 
 1.
-cd ~/SysLevel/assi/CISC220_A1/assignments/A1 (according to my file system)
+cd ~/SysLevel/assi/CISC220_A1/marking/A1/"Justin Case"/answers.txt (according to my file system)
 
 2.
-cd assignments/A1
+cd marking/A1/"Justin Case"/answers.txt
 
 3.
-
+cd ../../../../assignments/A6
 
 
 4.
@@ -41,10 +41,19 @@ chmod 640 *.pdf
 chmod u=rw,g=rw,o=r *.png
 
 13.
-
+find . -type d -name "[Aa]*"
 
 14.
-
+cat CISC124 CISC220 | sort | uniq -D | uniq | tee students_124_and_220.txt
 
 15.
 
+1. curl -o old_exams.zip https://research.cs.queensu.ca/home/burtonma/2023F/CISC220/A1/old_exams.zip
+
+2. mv old_exams.zip tests/exam
+
+3. cd tests/exam
+
+4. unzip old_exams.zip
+
+5. rm old_exams.zip

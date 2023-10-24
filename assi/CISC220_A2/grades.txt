@@ -1,0 +1,4 @@
+LAST	FIRST	A1	A2	A3	MIDTERM	EXAM
+Cade	Barry	9	8	8	12	80
+Friese	Andy	3	8	6	15	75
+Rice	Jasmine	10	10	10	15	99
