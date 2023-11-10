@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
         
 
     }else{
-        printf("%d", 2);
+        //exit without error
     }
     
 }
