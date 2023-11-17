@@ -6,21 +6,19 @@
 
 int main(void) {
     list *dest = list_init_empty();
-    list_add(dest, 1);
-    list_add(dest, 2);
-    list_add(dest, 3);
-    list_add(dest, 4);
-    list_add(dest, 5);
-    list_add(dest, 6);
+    list_add(dest, -3);
+    list_add(dest, -4);
+    list_add(dest, -5);
+    
     
     list *src = list_init_empty();
     list_add(src, -3);
     list_add(src, -4);
     list_add(src, -5);
 
-    size_t insert = 5;
+    size_t insert = 1;
     bool x = list_insert_all(dest, insert, src); 
-    
+    printf("%d\n", x);
     list_free(dest);
     list_free(src);
     

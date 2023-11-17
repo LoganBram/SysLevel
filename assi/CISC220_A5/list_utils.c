@@ -4,20 +4,22 @@
 #include "list.h"
 
 bool list_insert_all(list *dest, size_t index, const list *src) {
-    // Check for NULL pointers
+    // null point
     if (src == NULL || dest == NULL) {
         return false;
     }
 
-    // Check if src and dest point to the same list
-    if (src == dest) {
-        return false;
-    }
 
-    // Check if index is greater than the size of dest
     if (index > dest->size) {
         return false;
     }
+
+    // Check if src and dest point to the same list
+    if (src->arr == dest->arr) {
+        return false;
+    }
+
+    
 
     // Calculate new size after insertion
     size_t new_size = dest->size + src->size;
@@ -49,9 +51,6 @@ bool list_insert_all(list *dest, size_t index, const list *src) {
     // Update size of dest
     dest->size = new_size;
 
-    for(size_t i = 0; i < new_size; i++){
-        printf("%d\n", dest->arr[i]);
-    }
 
     return true;
 }
