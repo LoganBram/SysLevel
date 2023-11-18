@@ -1,26 +1,49 @@
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include "list.h"
+#include <stdlib.h>
 
-void main(){
-    int *list = malloc(2 * sizeof(int)); // Allocate memory for list dynamically
-    
-    list[0] = 1;
-    list[1] = 2;
+typedef struct {
+    int *arr;
+    size_t capacity;
+    size_t size;
+} list;
 
-    int list2[3] = {10, 20, 30};
+list *list_init_empty(void) {
+    list *new_list = malloc(sizeof(list));
+    if (new_list != NULL) {
+        new_list->arr = NULL;
+        new_list->capacity = 0;
+        new_list->size = 0;
+    }
+    return new_list;
+}
 
-    int *tmp = realloc(list, (sizeof(list) + sizeof(list2)) * sizeof(int));
+void list_add(list *t, int elem) {
+    // Add element to the list (you need to implement this function)
+}
 
-    list = tmp;
-    memcpy(list + 1, list2, 3 * sizeof(int));
+int main(void) {
+    list *dest = list_init_empty();
+    list_add(dest, -3);
+    list_add(dest, -4);
+    list_add(dest, -5);
 
-    printf("%ld\n", sizeof(list[0]));
+    // Resize the allocated memory for dest->arr
+    int *tmp = realloc(dest->arr, 2 * sizeof(int));
 
-    for (int i = 0; i < 5; ++i) {
-        printf("%d ", tmp[i]);
+    if (tmp != NULL) {
+        dest->arr = tmp;  // Update the dest->arr pointer
+        dest->capacity = 2;
+
+        printf("%d\n", dest->arr[0]);
+        printf("%d\n", dest->arr[1]);
+        // printf("%d\n", dest->arr[2]); // Accessing beyond the allocated size is undefined behavior
+
+        free(dest->arr);  // Free the memory when you're done
+    } else {
+        printf("Memory reallocation failed.\n");
     }
 
+    free(dest);  // Free the list structure
 
+    return 0;
 }
