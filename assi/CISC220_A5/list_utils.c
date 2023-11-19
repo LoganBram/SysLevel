@@ -58,23 +58,23 @@ bool list_insert_all(list *dest, size_t index, const list *src) {
     return true;
 }
 
-
+//reduces original list by reducing size, need to realloc memory?
 list *list_split_at(list *t, size_t index){
-
     //create new list
     list *new = list_init_empty();
     //check if capacity of new list is big enough
-    while(new->capacity < index + 1){
+    while(new->capacity < t->size - index){
         add_capacity(new);
     }
     printf("%zu\n", t->size);
-    int j = 1;
     //for loop through list structure one add to list structure 2
-    for (int i = 1; i < t->size - index; i++ ){
-        new->arr[i-1] = t->arr[index + i];
+    for(int i = 0; i < t->size - index; i++){
+        new->arr[i] = t->arr[index+i];
+        
     }
-    new->size = t->size - (index + 1);
-    t->size = index+1;
+
+    new->size = t->size - index;
+    t->size = index;
     
     
     for (size_t i = 0; i < t->size; ++i) {
@@ -84,7 +84,4 @@ list *list_split_at(list *t, size_t index){
          printf("new %d\n", new->arr[i]);
     }
 
-    //realloc memory
-
-    //increase/decrease size
 }
