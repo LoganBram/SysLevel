@@ -38,3 +38,15 @@ stack* stack_split_at(stack *s, size_t index) {
 
     return newStack;
 }
+
+
+
+bool double_less_than(const void *val1, const void *val2){
+    const double *doubleVal1 = (const double *)val1;
+    const double *doubleVal2 = (const double *)val2;
+    return (*doubleVal1 <= *doubleVal2);
+}
+
+bool stack_is_sorted(const stack *s, stack_leq_func eq){
+    
+}

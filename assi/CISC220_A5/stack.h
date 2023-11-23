@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+
+typedef bool (*stack_leq_func)(const void *, const void *);
+
 /**
  * Name of the node struct used by stack.
  */
