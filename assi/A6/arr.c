@@ -35,8 +35,31 @@ void arr_readn(FILE *f, size_t count, int *arr) {
  * Does not close the file f.
  */
 bool arr_readline(FILE *f, size_t max_length, char *s) {
-}
+    int c;
 
+    if (!f) {
+        return false;
+    }
+
+    size_t i;
+    for (i = 0; i < max_length; i++) { // -1 to leave space for null terminator
+        c = fgetc(f);
+        if(!c){
+            return false;
+        }
+        else{
+            if (c == '\n') {
+                s[i] = '\0';
+                return true;
+            
+            }
+        s[i] = c;
+        }
+    }
+
+    s[i] = '\0'; // Null-terminate the string
+    return false;
+}
 
 /*
  * Extracts integer values from a string where the integer values

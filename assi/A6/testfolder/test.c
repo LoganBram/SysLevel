@@ -1,23 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-    FILE *file;
-    int value;
+    FILE *f;
+    int c;
+    const size_t max_length = 10; // Define max_length as needed
+    char s[max_length + 1]; // Array to store the characters, +1 for the null terminator
 
-    // Open the file for reading
-    file = fopen("enc01.txt", "r");
-    if (file == NULL) {
+    f = fopen("enc01.txt", "r");
+    if (f == NULL) {
         perror("Error opening file");
         return -1;
     }
 
-    // Read integers separated by commas and/or whitespace
-    while (fscanf(file, " %d,", &value) == 1) {
-        //store in array
+    size_t i;
+    for (i = 0; i < max_length; i++) {
+        c = fgetc(f);
+        if (c != EOF) {
+            if (c == '\n') {
+                printf("\\n encountered\n");
+                break; // Stop reading after a newline
+            }
+            else {
+                s[i] = c;
+            }
+        }
     }
 
-    // Close the file
-    fclose(file);
+    s[i] = '\0'; // Null-terminate the string
+    fclose(f);
+
+    // Print the array as a string
+    printf("%s\n", s);
 
     return 0;
 }
+
