@@ -119,60 +119,47 @@ int* arr_fromstr(const char *s, size_t *n) {
  * all values in the returned array are meaningful).
  */
 int *arr_decode(size_t n, const int *enc, size_t *dec_len) {
-
-    int halfn = n/2;
-    int repeatcount[halfn];
-    int values[halfn];
-    
-    int j = 0;
-    //every second value starting from 1
-    for(int i = 1; i < halfn*2 ; i+=2){  
-        //add to get size
-        values[j] = enc[i];
-        j++;
-    }    
-   
-
-    j = 0;
-    //every second value starting from 0
-    for (int i = 0; i < halfn*2; i += 2) {
-        repeatcount[j] = enc[i];
-        j++;
+    int *repeatcount = malloc((n / 2) * sizeof(int));
+    int *values = malloc((n / 2) * sizeof(int));
+    if (!repeatcount || !values) {
+        free(repeatcount);  // Free in case one of them was successfully allocated
+        free(values);
+        return NULL;
     }
-    
-    
-    int valuesarr_size = sizeof(repeatcount) / sizeof(repeatcount[0]);
-    
-    //add up to get length of new array
-    int decomp_array_size;
-    for (int i = 0; i < valuesarr_size; i++){
+
+    //getting da values for both arrays
+    for (size_t i = 0; i < n; i += 2) {
+        repeatcount[i / 2] = enc[i];
+        values[i / 2] = enc[i + 1];
+    }
+
+    //get size for the array
+    int decomp_array_size = 0;
+    for (size_t i = 0; i < n / 2; i++) {
         decomp_array_size += repeatcount[i];
     }
 
-    int decomp_arr[decomp_array_size];
+    //make decomp array basedo n size
+    int *decomp_arr = malloc(decomp_array_size * sizeof(int));
+    if (decomp_arr == NULL) {
+        free(repeatcount);
+        free(values);
+        return NULL;
+    }
+
     int pos = 0;
-    for(int i = 0; i < halfn; i++){
-        for(int j = 0 ; j < repeatcount[i];j++){
+    for (size_t i = 0; i < n / 2; i++) {
+        for (int j = 0; j < repeatcount[i]; j++) {
             decomp_arr[pos++] = values[i];
         }
     }
-    
-    // Print the decompressed array
-    for (int i = 0; i < decomp_array_size; i++) {
-        printf("%d ", decomp_arr[i]);
-    }
-    
-    
-    
 
+    *dec_len = decomp_array_size;
+    //free the temp arrays
+    free(repeatcount); 
+    free(values);
 
-
-   
-    //for i 
-
-        //add value at val[i] size[i]times
-
-
+    return decomp_arr;
 }
 
 

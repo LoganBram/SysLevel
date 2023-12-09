@@ -7,7 +7,13 @@ int main() {
     const int arr[10] = {8,0,2,1,3,9,2,3,4,5};
     size_t dec_len;
 
-    arr_decode(n,arr,&dec_len);
+    int *myArray = arr_decode(n,arr,&dec_len);
+
+    // Use the array
+    for (int i = 0; i < 30; i++) {
+        printf("%d ", myArray[i]);
+    }
+
 
     
 }
