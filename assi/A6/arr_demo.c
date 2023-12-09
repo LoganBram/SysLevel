@@ -3,17 +3,11 @@
 #include "arr.h"
 
 int main() {
-    const char s[] = "1";
-    size_t n;
+    size_t n = 10;
+    const int arr[10] = {8,0,2,1,3,9,2,3,4,5};
+    size_t dec_len;
 
-    int *arr = arr_fromstr(s, &n);
-    if (arr != NULL) {
-        for (size_t i = 0; i < n; i++) {
-            printf("%d\n", arr[i]);
-        }
-        free(arr); // Free the dynamically allocated array
-    }
-    printf("count %ld\n", n);
+    arr_decode(n,arr,&dec_len);
 
-    return 0;
+    
 }

@@ -119,6 +119,60 @@ int* arr_fromstr(const char *s, size_t *n) {
  * all values in the returned array are meaningful).
  */
 int *arr_decode(size_t n, const int *enc, size_t *dec_len) {
+
+    int halfn = n/2;
+    int repeatcount[halfn];
+    int values[halfn];
+    
+    int j = 0;
+    //every second value starting from 1
+    for(int i = 1; i < halfn*2 ; i+=2){  
+        //add to get size
+        values[j] = enc[i];
+        j++;
+    }    
+   
+
+    j = 0;
+    //every second value starting from 0
+    for (int i = 0; i < halfn*2; i += 2) {
+        repeatcount[j] = enc[i];
+        j++;
+    }
+    
+    
+    int valuesarr_size = sizeof(repeatcount) / sizeof(repeatcount[0]);
+    
+    //add up to get length of new array
+    int decomp_array_size;
+    for (int i = 0; i < valuesarr_size; i++){
+        decomp_array_size += repeatcount[i];
+    }
+
+    int decomp_arr[decomp_array_size];
+    int pos = 0;
+    for(int i = 0; i < halfn; i++){
+        for(int j = 0 ; j < repeatcount[i];j++){
+            decomp_arr[pos++] = values[i];
+        }
+    }
+    
+    // Print the decompressed array
+    for (int i = 0; i < decomp_array_size; i++) {
+        printf("%d ", decomp_arr[i]);
+    }
+    
+    
+    
+
+
+
+   
+    //for i 
+
+        //add value at val[i] size[i]times
+
+
 }
 
 
