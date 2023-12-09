@@ -3,7 +3,7 @@
 #include "arr.h"
 
 int main() {
-    const char s[] = "1,2,312,3,1,21";
+    const char s[] = "1";
     size_t n;
 
     int *arr = arr_fromstr(s, &n);
@@ -13,6 +13,7 @@ int main() {
         }
         free(arr); // Free the dynamically allocated array
     }
+    printf("count %ld\n", n);
 
     return 0;
 }

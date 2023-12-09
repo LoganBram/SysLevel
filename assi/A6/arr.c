@@ -98,6 +98,8 @@ int* arr_fromstr(const char *s, size_t *n) {
         token = strtok(NULL, ",");
     }
 
+    *n = count+1;
+
     free(str); // Free the copied string
     return arr;
 }
