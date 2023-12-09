@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "arr.h"
 
 /*
@@ -69,8 +70,38 @@ bool arr_readline(FILE *f, size_t max_length, char *s) {
  * The number of extracted integers is written into the object
  * pointed at by n.
  */
-int *arr_fromstr(const char *s, size_t *n) {
+
+
+int* arr_fromstr(const char *s, size_t *n) {
+    int count = 0;
+    char *str = strdup(s); // Copy the string to a modifiable array
+
+    // Count commas
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == ',') {
+            count++;
+        }
+    }
+
+    int *arr = malloc((count + 1) * sizeof(int)); // Dynamically allocate array
+    if (arr == NULL) {
+        free(str);
+        return NULL; // Allocation failed
+    }
+
+    *n = count + 1;
+    char *token = strtok(str, ",");
+    int idx = 0;
+
+    while (token != NULL) {
+        arr[idx++] = atoi(token);
+        token = strtok(NULL, ",");
+    }
+
+    free(str); // Free the copied string
+    return arr;
 }
+
 
 
 

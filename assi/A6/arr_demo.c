@@ -2,15 +2,17 @@
 #include <stdio.h>
 #include "arr.h"
 
-void main(){
-    FILE *file;
-    int count = 4;
-    char array[10];
+int main() {
+    const char s[] = "1,2,312,3,1,21";
+    size_t n;
 
-    file = fopen("enc01.txt", "r");
+    int *arr = arr_fromstr(s, &n);
+    if (arr != NULL) {
+        for (size_t i = 0; i < n; i++) {
+            printf("%d\n", arr[i]);
+        }
+        free(arr); // Free the dynamically allocated array
+    }
 
-    bool x = arr_readline(file, count, array);
-    printf("%s\n", array);
-    printf("%d", x);
-    fclose(file);
+    return 0;
 }
