@@ -36,31 +36,43 @@ void arr_readn(FILE *f, size_t count, int *arr) {
  * Does not close the file f.
  */
 bool arr_readline(FILE *f, size_t max_length, char *s) {
-    int c;
-
-    if (!f) {
+    if (!f || max_length == 0) {
         return false;
     }
 
-    size_t i;
-    for (i = 0; i < max_length; i++) { // -1 to leave space for null terminator
+    int c;
+    size_t i = 0;
+
+    while (i < max_length - 1) {
         c = fgetc(f);
-        if(!c){
-            return false;
-        }
-        else{
-            if (c == '\n') {
+
+       
+        if (c == EOF) {
+            if (feof(f)) {  
                 s[i] = '\0';
-                return true;
-            
+                return false;  
             }
-        s[i] = c;
+            if (ferror(f)) { 
+                s[i] = '\0';
+                return false;
+            }
         }
+
+        // checkfor newline character
+        if (c == '\n') {
+            //end string
+            s[i] = '\0';
+            return true;  
+        }
+
+        s[i] = (char)c;
+        i++;
     }
 
-    s[i] = '\0'; // Null-terminate the string
-    return false;
+    s[i] = '\0'; // terminate the string reagrdles
+    return false; //false if length reached wiithout \n
 }
+
 
 /*
  * Extracts integer values from a string where the integer values
