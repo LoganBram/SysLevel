@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
-    char str[] = "hello, world, this is a test string";
+    char str[] = "12,2,3,6";
     int count = 0;
 
     // Iterate through string and count commas
@@ -13,17 +14,27 @@ int main() {
     }
 
     printf("Number of commas in the string: %d\n", count);
-
+    int arr[count+1];
 
     //use strtok(string,",")
-   printf(str);
+    char *token = strtok(str, ",");
+    int value = atoi(token);
+    //add to array
+    arr[0] = value;
 
    //for loop of comma count +1
+    for(int i = 1; i < count+1; i++){
+        token = strtok(NULL, ",");
+        value = atoi(token);
+        arr[i] = value;
+    }
     //token = strtok(NULL, ",")
     //conver token using atoi
     //store in array at i of for loop
-    // Further processing can be done here if needed, like using strtok
-    // But remember, strtok modifies the original string
+    printf("%d\n", arr[0]);
+    printf("%d\n", arr[1]);
+    printf("%d\n", arr[2]);
+    printf("%d\n", arr[3]);
 
     return 0;
 }
