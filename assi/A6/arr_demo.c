@@ -2,16 +2,20 @@
 #include <stdio.h>
 #include "arr.h"
 
-int main() {
-    size_t n = 10;
-    const int arr[10] = {8,0,2,1,3,9,2,3,4,5};
-    size_t dec_len;
+int main(int argc, char *argv[]) {
+    
+    if(argc != 2){
+        fprintf(stderr, "Wrong number of inputs");
+        exit(1);
+    }
+    
+    printf("%s", argv[1]);
 
-    int *myArray = arr_decode(n,arr,&dec_len);
+    FILE *file = fopen(argv[1], "r");
 
-    // Use the array
-    for (int i = 0; i < 30; i++) {
-        printf("%d ", myArray[i]);
+    if(!file){
+        fprintf(stderr, "cannot open file");
+        exit(2);
     }
 
 
