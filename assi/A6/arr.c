@@ -42,7 +42,6 @@ bool arr_readline(FILE *f, size_t max_length, char *s) {
 
     int c;
     size_t i = 0;
-
     while (i < max_length - 1) {
         c = fgetc(f);
 
