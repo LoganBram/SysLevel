@@ -45,7 +45,6 @@ bool arr_readline(FILE *f, size_t max_length, char *s) {
     while (i < max_length - 1) {
         c = fgetc(f);
 
-       
         if (c == EOF) {
             if (feof(f)) {  
                 s[i] = '\0';
@@ -133,7 +132,7 @@ int *arr_decode(size_t n, const int *enc, size_t *dec_len) {
     int *repeatcount = malloc((n / 2) * sizeof(int));
     int *values = malloc((n / 2) * sizeof(int));
     if (!repeatcount || !values) {
-        free(repeatcount);  // Free in case one of them was successfully allocated
+        free(repeatcount);  // free in case one of them was successfully allocated
         free(values);
         return NULL;
     }
